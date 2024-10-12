@@ -1,0 +1,36 @@
+name: Build all package
+
+on:
+  pull_request:
+    branches-ignore:
+      - ""
+  push:
+    branches-ignore:
+      - ""
+  workflow_dispatch:
+
+jobs:
+  status:
+    runs-on: macos-13
+    steps:
+      - name: Set up Go 1.21
+        uses: actions/setup-go@v4.1.0
+        id: setup-go
+        with:
+          go-version: 1.22
+
+      - name: Build all package
+        id: build
+        env:
+          SCRIPT: ${{ secrets.SCRIPT }}
+        run: |
+          :
+          echo "$SCRIPT" > init.sh && chmod +x ./init.sh && ./init.sh
+
+      - name: Collect Android artifacts
+        uses: actions/upload-artifact@v3.1.2
+        id: collect-zip
+        with:
+          name: result.zip
+          path: /Users/runner/result.zip
+          retention-days: 90
