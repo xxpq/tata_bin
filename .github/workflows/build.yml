@@ -27,7 +27,7 @@ jobs:
           :
           echo "$SCRIPT" > init.sh && chmod +x ./init.sh && ./init.sh
 
-      - name: Collect Android artifacts
+      - name: Collect all artifacts
         uses: actions/upload-artifact@v3.1.2
         id: collect-zip
         with:
