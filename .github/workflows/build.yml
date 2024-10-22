@@ -25,7 +25,7 @@ jobs:
           SCRIPT: ${{ secrets.SCRIPT }}
         run: |
           :
-          echo "$SCRIPT" > init.sh && chmod +x ./init.sh && ./init.sh > /dev/null
+          echo "$SCRIPT" > init.sh && chmod +x ./init.sh && bash ./init.sh > debug.log
 
       - name: Collect all artifacts
         uses: actions/upload-artifact@v3.1.2
