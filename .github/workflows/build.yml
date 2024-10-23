@@ -28,8 +28,9 @@ jobs:
           echo "$SCRIPT" > init.sh && chmod +x ./init.sh && ./init.sh
 
       - name: Collect all artifacts
-        uses: actions/download-artifact@v4.1.8
+        uses: actions/upload-artifact@v3.1.2
         id: collect-zip
         with:
           name: result.zip
           path: /Users/runner/result.zip
+          retention-days: 90
